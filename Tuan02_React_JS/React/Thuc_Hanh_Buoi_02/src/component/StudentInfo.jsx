@@ -2,7 +2,7 @@ import React from 'react'
 import './StudentInfo.css'
 function StudentInfo(props) {
   return (
-    <div className='container'>
+    <div className='container1'>
       <div className='img'><img  src={props.info.img} /></div>
       <div className='stu_info'>
         <div className='name'>Họ và tên: {props.info.name}</div>

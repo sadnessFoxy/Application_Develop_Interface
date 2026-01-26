@@ -1,0 +1,28 @@
+
+.primary{
+    background-color: rgba(35, 35, 221, 0.724);
+    color: white;
+}
+.warning{
+    background-color: rgba(250, 229, 42, 0.837);
+    color: white;
+}
+.danger{
+    background-color: rgba(206, 15, 5, 0.724);
+    color: white;
+}
+
+.primary:hover {
+background-color: blue;
+transform: scale(1.1);
+
+}
+.warning:hover {
+background-color: yellow;
+color: black;
+transform: scale(1.1);
+}
+.danger:hover {
+background-color: red;
+transform: scale(1.1);
+}
