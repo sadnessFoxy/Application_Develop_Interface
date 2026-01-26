@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Bai1 from './pages/Bai1';
 import Bai2 from './pages/Bai2';
 import Bai3 from './pages/Bai3';
-// import Bai4 from './pages/Bai4';
+import Bai4 from './pages/Bai4';
 // import Bai5 from './pages/Bai5';
 import './App.css';
 
