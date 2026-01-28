@@ -1,0 +1,25 @@
+li {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+li span {
+    font-size: 20px;
+    color: black;
+}
+li button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: red;
+    width: 20%;
+    border-radius: 20px;
+    padding: 10px;
+}
+li button:hover {
+    background-color: darkred;
+}
+    
