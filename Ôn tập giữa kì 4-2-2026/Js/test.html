@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; background-color: #f9f9f9; }
+        .box { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px; background: white; }
+        input { margin: 5px 0; padding: 8px; width: 220px; display: block; border: 1px solid #ddd; border-radius: 4px; }
+        button { padding: 8px 12px; margin: 5px 2px; cursor: pointer; border-radius: 5px; border: 1px solid #333; transition: 0.3s; }
+        button:hover { background-color: #eee; }
+        pre { background: white; color: black; padding: 15px; border-radius: 10px; overflow-x: auto; min-height: 250px; border: 5px solid black; }
+        h4 { margin-top: 0; color: #2c3e50; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h4>Nhập thông tin (Name & Age)</h4>
+        <input type="text" id="name" placeholder="Tên (Name)">
+        <input type="text" id="userId" placeholder="ID">
+    </div>
+
+    <div class="box">
+        <h4>1. Dùng Fetch (.then)</h4>
+        <button onclick="fetchRead()">Xem (GET)</button>
+        <button onclick="fetchCreate()">Thêm (POST)</button>
+        <button onclick="fetchUpdate()">Sửa (PUT)</button>
+        <button onclick="fetchDelete()">Xóa (DELETE)</button>
+    </div>
+
+    <div class="box">
+        <h4>2. Dùng Async - Await</h4>
+        <button onclick="asyncRead()">Xem (GET)</button>
+        <button onclick="asyncCreate()">Thêm (POST)</button>
+        <button onclick="asyncUpdate()">Sửa (PUT)</button>
+        <button onclick="asyncDelete()">Xóa (DELETE)</button>
+    </div>
+
+    <div class="box">
+        <h4>3. Dùng Axios</h4>
+        <button onclick="axiosRead()">Xem (GET)</button>
+        <button onclick="axiosPost()">Thêm (POST)</button>
+        <button onclick="axiosPut()">Sửa (PUT)</button>
+        <button onclick="axiosDelete()">Xóa (DELETE)</button>
+    </div>
+
+    <h4>Kết quả</h4>
+    <pre id="result">Kết quả</pre>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    API_URL = "https://699fb84a3188b0b1d5369e2a.mockapi.io/Users"
+    const resultBox = document.getElementById('result');
+    const getInputData = () => ({
+         name : document.getElementById("name").value,
+         id : document.getElementById("userId").value
+    } )  
+    const showResult = (data) => {
+        resultBox.innerText = typeof data === "string" ? data : JSON.stringify(data,null,2)
+    }
+        function fetchRead (){
+            fetch(API_URL)
+            .then(res=>res.json())
+            .then(data=>showResult(data))
+        }
+        function fetchCreate(){
+         const data = getInputData()
+         if(!data.name){
+            alert("Chưa nhập dữ liệu nữa mà đòi post hả")
+            return
+         }
+            fetch(API_URL,{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({name:data.name})
+            })
+            .then(res =>res.json())
+            .then(data=>showResult(data))
+        }
+        function fetchUpdate(){
+         const data  = getInputData()
+         if(!data.name){
+            alert("Chưa nhập dữ liệu nữa mà đòi put hả")
+            return
+         }
+         fetch(API_URL + "/" + data.id,{
+            method:"PUT",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({name:data.name})
+         })
+         .then(res =>res.json())
+         .then(data=>showResult(data))
+        }
+        function fetchDelete(){
+            const  data  = getInputData()
+            fetch(API_URL + "/" + data.id,{
+                method:"DELETE"
+            })
+            .then(()=>alert(`Đã xóa user có id là: ${data.id}`))           
+        }
+        async function asyncRead() {
+            const res = await fetch(API_URL)
+            const data = await res.json()
+            showResult(data)
+        }
+        async function asyncCreate(){
+            const data = getInputData()
+            const res = await fetch(API_URL,{
+                method : "POST",
+                headers : { "Content-Type":"application/json"},
+                body : JSON.stringify({name:data.name})
+            })
+            const result  = await res.json()
+            showResult(result)
+        }
+        async function asyncUpdate(){
+            const data = getInputData()
+            const res  = await fetch(API_URL + "/" + data.id,{
+                  method : "PUT",
+                headers : { "Content-Type":"application/json"},
+                body : JSON.stringify({name:data.name})
+            })
+            const result = await res.json()
+            showResult(result)
+        }
+        async function asyncDelete(){
+            const data = getInputData()
+            const res  = await fetch(API_URL + "/" + data.id,{
+                method : "DELETE",
+            })
+            const result = await res.json()
+            showResult(`Đã xóa user có id là: ${data.id}`)
+        }
+
+
+        function axiosRead() {
+            axios.get(API_URL).then(res => showResult(res.data));
+        }
+
+        function axiosPost() {
+            const data = getInputData();
+            axios.post(API_URL, { name: data.name, age: data.age })
+                .then(res => showResult(res.data));
+        }
+
+        function axiosPut() {
+            const data = getInputData();
+            axios.put(API_URL + '/' + data.id, { name: data.name, age: data.age })
+                .then(res => showResult(res.data));
+        }
+
+        function axiosDelete() {
+            const data = getInputData();
+            axios.delete(API_URL + '/' + data.id)
+                .then(() => showResult("Đã xóa ID: " + data.id));
+        }
+    </script>
+</html>
