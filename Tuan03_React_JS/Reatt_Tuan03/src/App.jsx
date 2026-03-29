@@ -3,7 +3,8 @@ import { useState } from "react";
 import Bai1 from "./pages/Bai1";
 import Bai2 from "./pages/Bai2";
 import Bai3 from "./pages/Bai3";
-// import Bai4 from "./pages/Bai4";
+import TodoApp from "./pages/TodoApp";
+
 // import Bai5 from "./pages/Bai5";
 // import Bai6 from "./pages/Bai6";
 
@@ -15,7 +16,7 @@ function App() {
     { id: 1, label: "Bài 1", component: <Bai1 /> },
     { id: 2, label: "Bài 2", component: <Bai2 /> },
     { id: 3, label: "Bài 3", component: <Bai3 /> },
-    // { id: 4, label: "Bài 4", component: <Bai4 /> },
+    { id: 4, label: "Bài 4", component: <TodoApp /> },
     // { id: 5, label: "Bài 5", component: <Bai5 /> },
     // { id: 6, label: "Bài 6", component: <Bai6 /> },
   ];

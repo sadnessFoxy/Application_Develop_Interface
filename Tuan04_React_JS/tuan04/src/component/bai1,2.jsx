@@ -41,7 +41,7 @@ function Bai1_2() {
             <div key={items.id}>
               <p>{items.name}</p>
               <p>{items.email}</p>
-            </div>
+            </div> 
           ))
         )
       )

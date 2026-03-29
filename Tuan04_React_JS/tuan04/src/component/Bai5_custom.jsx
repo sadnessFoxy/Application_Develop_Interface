@@ -21,23 +21,23 @@ function Bai5_custom() {
             setLoading(false)
         }
     },[])
-    const handleAdd = async (e)=>{
+    const handleAdd = async(e)=>{
         e.preventDefault()
-        if(!inputValue.trim()) return ;
+        if(!inputValue.trim()) return
         setLoading(true)
         try {
             const res = await fetch(API_URL,{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
-                body: JSON.stringify({name:inputValue,completed:false})
+                body:JSON.stringify({name:inputValue,completed:false})
             })
             const new_data = await res.json()
             setData([...data,new_data])
             setInputValue("")
         } catch (error) {
-            alert("Error when adding",error.message)
+            setError(error.message)
         }finally{
-            setLoading(false)
+           setLoading(false)
         }
     }
     const handleDelete = async (id)=>{

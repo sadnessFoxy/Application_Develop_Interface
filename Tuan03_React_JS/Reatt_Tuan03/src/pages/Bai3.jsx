@@ -1,45 +1,44 @@
-import React from 'react'
-import { useMemo, useState } from 'react';
- const MOCK_DATA = Array.from({ length: 5000 }, (_, i) => ({
+import React, { useMemo, useState } from 'react';
+
+const MOCK_DATA = Array.from({ length: 5000 }, (_, i) => ({
   id: i,
   name: `Laptop Pro ${i}`,
   price: Math.floor(Math.random() * 2000) + 100
-}))
-function Bai3() {
+}));
 
+function Bai3() {
   const [search, setSearch] = useState('');
   const [maxPrice, setMaxPrice] = useState(2000);
+
   const filteredProducts = useMemo(() => {
-    console.time('Thời gian Filter'); 
-    const result = MOCK_DATA.filter(p => 
+    return MOCK_DATA.filter(p => 
+
       p.name.toLowerCase().includes(search.toLowerCase()) && p.price <= maxPrice
     );
-    console.timeEnd('Thời gian Filter');
-    return result;
-  }, [search, maxPrice]);
+  }, [search, maxPrice]); 
 
   const totalPrice = useMemo(() => {
-    console.time('Thời gian Tính Tổng');
-    const total = filteredProducts.reduce((sum, p) => sum + p.price, 0);
-    console.timeEnd('Thời gian Tính Tổng');
-    return total;
+    return filteredProducts.reduce((sum, p) => sum + p.price, 0);
   }, [filteredProducts]);
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Product Filter</h2>
+    <div>
+      <h2>Bộ lọc sản phẩm</h2>
+      
+  
       <input 
-        placeholder="Tìm tên sản phẩm..." 
+        placeholder="Tìm tên..." 
         onChange={(e) => setSearch(e.target.value)} 
       />
+    
       <input 
         type="number" 
         value={maxPrice}
         onChange={(e) => setMaxPrice(Number(e.target.value))} 
       />
       
-      <p>Số lượng: **{filteredProducts.length}**</p>
-      <p>Tổng tiền: **${totalPrice}**</p>
+      <p>Số lượng: {filteredProducts.length}</p>
+      <p>Tổng tiền: ${totalPrice}</p>
 
       <hr />
       <ul>
@@ -49,8 +48,6 @@ function Bai3() {
       </ul>
     </div>
   );
-
-
 }
 
-export default Bai3
+export default Bai3;

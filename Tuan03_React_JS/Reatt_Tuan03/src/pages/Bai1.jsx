@@ -1,68 +1,59 @@
 import React, { useState } from 'react';
 
 const UserForm = () => {
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    age: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData((prevState) => ({
-      ...prevState,    
-      [name]: value   
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Dữ liệu đã submit:', formData);
-    alert(`Chào ${formData.name}, form đã được gửi!`);
-  };
-
-  return (
-    <div style={{ padding: '20px', maxWidth: '400px' }}>
-      <h2>Thông tin người dùng</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '10px' }}>
-          <label>Name: </label>
-          <input
-            type="text"
-            name="name"         
-            value={formData.name} 
-            onChange={handleChange}
-          />
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>Email: </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>Age: </label>
-          <input
-            type="number"
-            name="age"
-            value={formData.age}
-            onChange={handleChange}
-          />
-        </div>
-
-        <button type="submit">Submit</button>
-      </form>
-      <div style={{ marginTop: '20px', background: '#f4f4f4', padding: '10px' }}>
-        <strong>Current State:</strong>
-        <pre>{JSON.stringify(formData, null, 2)}</pre>
-      </div>
+const [store,setStore] = useState([])
+const [data,setData] = useState({
+  name:"",
+  email:"",
+  age:""
+})
+const saveHandler = (e)=>{
+  e.preventDefault()
+  setStore((oldArray) => [
+      ...oldArray, 
+      { ...data}
+    ]);
+}
+const handler = (e)=>{
+  const {name,value} = e.target
+  setData((olddata)=>({
+   ...olddata,
+   [name]:value
+  }))
+}
+return(
+ <div>
+    <form action="">
+    <div>
+      <input type="text" name='name' onChange={handler} value={data.name}/>
     </div>
-  );
+    <div>
+      <input type="email" name='email' onChange={handler} value={data.email}/>
+    </div>
+    <div>
+      <input type="number" name='age' onChange={handler} value={data.age}/>
+    </div>
+    <button onClick={saveHandler}>submit</button>
+
+  </form>
+  <div>
+    <p>{data.name}</p>
+    <p>{data.email}</p>
+    <p>{data.age}</p>
+  </div>
+  <div>
+    <ul>
+      {store.map((person)=>(
+         <div key={person.id}>
+           <strong>{person.name}</strong> - {person.email} - {person.age}
+         </div>
+      ))}
+    </ul>
+  </div>
+ </div>
+  
+)
+
 };
 
 export default UserForm;

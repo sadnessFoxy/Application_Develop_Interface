@@ -4,7 +4,8 @@ import Bai3 from './component/Bai3';
 import Bai4 from './component/Bai4';
 import Bai5 from './component/Bai5';
 import Bai5_custom from './component/Bai5_custom';
-
+import UserSearch from './component/UserSearch';
+import UserSearchName from './component/UserSearchName';
 
 function App() {
   return (
@@ -24,8 +25,10 @@ function App() {
 
       <hr /> */}
 
-      <h1>TODO LIST - MOCKAPI</h1>
-      <Bai5_custom></Bai5_custom>
+      {/* <h1>TODO LIST - MOCKAPI</h1>
+      <Bai5_custom></Bai5_custom> */}
+
+      <UserSearchName></UserSearchName>
 
     </div>
   );
