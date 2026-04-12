@@ -10,9 +10,15 @@ function App() {
   return (
     <>
       {/* <ComponentA />
-      <ComponentB /> */}
+      <ComponentB /> */}  
+      // bài 1 
 
-      <ToggleTheme/>
+      {/* <ToggleTheme/>    */}
+      // bài 2
+
+      
+
+
     </>
   )
 }
