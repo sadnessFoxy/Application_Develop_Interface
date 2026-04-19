@@ -1,22 +1,29 @@
-import { useState } from 'react'
 import './App.css'
+import Area from './component/Area'
 import ComponentA from './component/componentA'
 import ComponentB from './component/componentB'
 import ToggleTheme from './component/ToggleTheme'
+import Cart from './component/Cart'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
+
       {/* <ComponentA />
-      <ComponentB /> */}  
-      // bài 1 
+      <ComponentB /> */}
 
       {/* <ToggleTheme/>    */}
-      // bài 2
 
-      
+      {/* <Area></Area> */}
+
+      <div style={{ marginBottom: '50px' }}>
+        <Cart />
+      </div>
+
+
+
+
 
 
     </>
