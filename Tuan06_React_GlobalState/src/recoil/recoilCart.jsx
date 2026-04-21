@@ -17,4 +17,4 @@ export const cartStats = selector({
             totalPrice
         };
     }
-});
+});

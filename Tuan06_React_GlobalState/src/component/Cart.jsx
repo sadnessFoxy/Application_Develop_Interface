@@ -50,17 +50,17 @@ function Cart() {
     return (
         <div className="cart-container" style={{ padding: '20px', fontFamily: 'Arial, sans-serif', maxWidth: '1000px', margin: '0 auto' }}>
             <h1 style={{ textAlign: 'center', color: '#333' }}>Shopping Mall</h1>
-            
+
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '30px' }}>
-                {/* Product List */}
+                {/* Product List */}c
                 <div className="products-section">
                     <h2>Products</h2>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                         {PRODUCTS.map(product => (
-                            <div key={product.id} style={{ 
-                                border: '1px solid #ddd', 
-                                borderRadius: '10px', 
-                                padding: '15px', 
+                            <div key={product.id} style={{
+                                border: '1px solid #ddd',
+                                borderRadius: '10px',
+                                padding: '15px',
                                 textAlign: 'center',
                                 background: '#fff',
                                 boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
@@ -68,7 +68,7 @@ function Cart() {
                                 <img src={product.image} alt={product.name} style={{ width: '100%', borderRadius: '5px' }} />
                                 <h3 style={{ fontSize: '1.1rem', margin: '10px 0' }}>{product.name}</h3>
                                 <p style={{ fontWeight: 'bold', color: '#e44d26' }}>${product.price}</p>
-                                <button 
+                                <button
                                     onClick={() => handleAddToCart(product)}
                                     style={{
                                         backgroundColor: '#007bff',
@@ -90,9 +90,9 @@ function Cart() {
                 </div>
 
                 {/* Cart Section */}
-                <div className="cart-section" style={{ 
-                    background: '#f8f9fa', 
-                    padding: '20px', 
+                <div className="cart-section" style={{
+                    background: '#f8f9fa',
+                    padding: '20px',
                     borderRadius: '10px',
                     boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
                     height: 'fit-content'
@@ -103,12 +103,12 @@ function Cart() {
                     ) : (
                         <div className="cart-items">
                             {cart.map(item => (
-                                <div key={item.id} style={{ 
-                                    display: 'flex', 
-                                    justifyContent: 'space-between', 
-                                    alignItems: 'center', 
-                                    padding: '10px 0', 
-                                    borderBottom: '1px solid #ddd' 
+                                <div key={item.id} style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    padding: '10px 0',
+                                    borderBottom: '1px solid #ddd'
                                 }}>
                                     <div style={{ flex: 1 }}>
                                         <h4 style={{ margin: 0 }}>{item.name}</h4>
@@ -117,12 +117,12 @@ function Cart() {
                                         </p>
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                        <button 
+                                        <button
                                             onClick={() => handleDecrease(item.id)}
                                             style={{ padding: '2px 8px', borderRadius: '4px', border: '1px solid #ccc', cursor: 'pointer' }}
                                         >-</button>
                                         <span style={{ fontWeight: 'bold', minWidth: '20px', textAlign: 'center' }}>{item.quantity}</span>
-                                        <button 
+                                        <button
                                             onClick={() => handleIncrease(item.id)}
                                             style={{ padding: '2px 8px', borderRadius: '4px', border: '1px solid #ccc', cursor: 'pointer' }}
                                         >+</button>

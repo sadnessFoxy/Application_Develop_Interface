@@ -1,0 +1,176 @@
+/* ── Overlay ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 10;
+}
+
+/* ── Container — centered on both axes ── */
+.intro-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(824px, 96vw);
+  height: 811px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0px 0px 1px #171a1f26, 0px 0px 2px #171a1f33;
+  z-index: 20;
+  overflow: visible;
+
+  /* Entrance animation */
+  animation: modalIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 24px)) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* ── Close button ── */
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  color: #6B7280;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #F3F4F6;
+  color: #111827;
+}
+
+/* ── Title ── */
+.intro-title {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #F44B87;
+  letter-spacing: -0.3px;
+}
+
+/* ── Subtitle ── */
+.intro-subtitle {
+  position: absolute;
+  top: 105px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #6E7787;
+  padding: 0 32px;
+}
+
+/* ══════════════════════════════════════
+   NEXT button — spec: top:731 left:231
+   ══════════════════════════════════════ */
+.btn-next {
+  position: absolute;
+  top: 668px;
+  left: 231px;
+  width: 362px;
+  height: 48px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: #F44B87;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px #F44B8740;
+}
+
+.btn-next:hover {
+  background: #e3316d;
+  box-shadow: 0 4px 16px #F44B8766;
+  transform: translateY(-1px);
+}
+
+.btn-next:hover:active {
+  background: #c5225a;
+  transform: translateY(0);
+  box-shadow: 0 2px 8px #F44B8740;
+}
+
+.btn-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ══════════════════════════════════════
+   SKIP button — reverse color of Next
+   spec: same dimensions, below Next
+   ══════════════════════════════════════ */
+.btn-skip {
+  position: absolute;
+  top: 731px;
+  left: 231px;
+  width: 362px;
+  height: 48px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #F44B87;        /* primary-500 text — reversed from Next */
+  background: #00000000; /* transparent — reversed from Next */
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-skip:hover {
+  color: #F44B87;
+  background: #FDDCE8;   /* primary-150 */
+}
+
+.btn-skip:hover:active {
+  color: #F44B87;
+  background: #FBC8DA;   /* primary-200 */
+}
+
+.btn-skip:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
